@@ -1,82 +1,85 @@
-[
-	{
-		"question": "What was the project name and what did it do? Are you still working on it? How long did you work on it?",
-		"answer": ""
-	},
-	{
-		"question": "What problem or need did the project solve? Was the problem resolved, or was it a limitation that was not fully addressed?",
-		"answer": ""
-	},
-	{
-		"question": "Who was the target user, customer, or stakeholder? This could refer to yourself, your team, a specific course, or a specific company, etc.",
-		"answer": ""
-	},
-	{
-		"question": "What was the project's scope, and what were the main deliverables, ie. the features or products that were built during the course of the project?",
-		"answer": ""
-	},
-	{
-		"question": "What was your role on the project?",
-		"answer": ""
-	},
-	{
-		"question": "What technologies, languages, frameworks, and tools were used?",
-		"answer": ""
-	},
-	{
-		"question": "What was the architecture or system design? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
-		"answer": ""
-	},
-	{
-		"question": "What was the most important feature you built?",
-		"answer": ""
-	},
-	{
-		"question": "What part of the project were you personally responsible for?",
-		"answer": ""
-	},
-	{
-		"question": "What technical challenges did the project face? This could refer to technical debt, performance issues, security vulnerabilities, etc.",
-		"answer": ""
-	},
-	{
-		"question": "How did you solve the hardest technical problem? Be thorough in your explanation, including the technical details and the solution you implemented.",
-		"answer": ""
-	},
-	{
-		"question": "Did you work with APIs, databases, cloud services, or third-party integrations? If so, what were they and how did you integrate them into the project?",
-		"answer": ""
-	},
-	{
-		"question": "Did you write tests, improve CI/CD, or handle deployment (devops)? If so, what did you do and what were the results?",
-		"answer": ""
-	},
-	{
-		"question": "Did you optimize performance, reliability, security, or maintainability? Include specific metrics and results if available.",
-		"answer": ""
-	},
-	{
-		"question": "Did you collaborate with designers, product managers, QA, or other engineers? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
-		"answer": ""
-	},
-	{
-		"question": "Did the project have deadlines, milestones, or agile processes?",
-		"answer": ""
-	},
-	{
-		"question": "What measurable results came from the project? Include specific metrics and results if available.",
-		"answer": ""
-	},
-	{
-		"question": "Did the project reduce costs, save time, improve UX, or increase revenue? Include specific metrics and results if available.",
-		"answer": ""
-	},
-	{
-		"question": "What did you learn from the project? This could refer to the technical skills you gained, the lessons learned, the challenges you faced, the solutions you implemented, etc.",
-		"answer": ""
-	},
-	{
-		"question": "What parts of this project are the most notable and impactful? How did this project contribute to your journey as a software engineer?",
-		"answer": ""
-	}
-]
+{
+	"id": "swe-project-change-me-to-a-unique-id",
+	"questions": [
+		{
+			"question": "What was the project name and what did it do? Are you still working on it? How long did you work on it?",
+			"answer": ""
+		},
+		{
+			"question": "What problem or need did the project solve? Was the problem resolved, or was it a limitation that was not fully addressed?",
+			"answer": ""
+		},
+		{
+			"question": "Who was the target user, customer, or stakeholder? This could refer to yourself, your team, a specific course, or a specific company, etc.",
+			"answer": ""
+		},
+		{
+			"question": "What was the project's scope, and what were the main deliverables, ie. the features or products that were built during the course of the project?",
+			"answer": ""
+		},
+		{
+			"question": "What was your role on the project?",
+			"answer": ""
+		},
+		{
+			"question": "What technologies, languages, frameworks, and tools were used?",
+			"answer": ""
+		},
+		{
+			"question": "What was the architecture or system design? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
+			"answer": ""
+		},
+		{
+			"question": "What was the most important feature you built?",
+			"answer": ""
+		},
+		{
+			"question": "What part of the project were you personally responsible for?",
+			"answer": ""
+		},
+		{
+			"question": "What technical challenges did the project face? This could refer to technical debt, performance issues, security vulnerabilities, etc.",
+			"answer": ""
+		},
+		{
+			"question": "How did you solve the hardest technical problem? Be thorough in your explanation, including the technical details and the solution you implemented.",
+			"answer": ""
+		},
+		{
+			"question": "Did you work with APIs, databases, cloud services, or third-party integrations? If so, what were they and how did you integrate them into the project?",
+			"answer": ""
+		},
+		{
+			"question": "Did you write tests, improve CI/CD, or handle deployment (devops)? If so, what did you do and what were the results?",
+			"answer": ""
+		},
+		{
+			"question": "Did you optimize performance, reliability, security, or maintainability? Include specific metrics and results if available.",
+			"answer": ""
+		},
+		{
+			"question": "Did you collaborate with designers, product managers, QA, or other engineers? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
+			"answer": ""
+		},
+		{
+			"question": "Did the project have deadlines, milestones, or agile processes?",
+			"answer": ""
+		},
+		{
+			"question": "What measurable results came from the project? Include specific metrics and results if available.",
+			"answer": ""
+		},
+		{
+			"question": "Did the project reduce costs, save time, improve UX, or increase revenue? Include specific metrics and results if available.",
+			"answer": ""
+		},
+		{
+			"question": "What did you learn from the project? This could refer to the technical skills you gained, the lessons learned, the challenges you faced, the solutions you implemented, etc.",
+			"answer": ""
+		},
+		{
+			"question": "What parts of this project are the most notable and impactful? How did this project contribute to your journey as a software engineer?",
+			"answer": ""
+		}
+	]
+}

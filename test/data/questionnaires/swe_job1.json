@@ -1,82 +1,85 @@
-[
-	{
-		"question": "What was your official job title, employer, employment dates, and industry (e.g., fintech, healthcare, devtools)? Is the job still active? Add a 1-2 sentence blurb about what the industry is and what your company did in it.",
-		"answer": "Entry-Level Software Engineer at BrightCart (e-commerce logistics), Mar 2023 to Aug 2025. BrightCart is in retail logistics: it helps online retailers move inventory and fulfill orders reliably, especially around delivery SLA commitments."
-	},
-	{
-		"question": "What was the company's product, service, or internal system? This could refer to the company's core product, the services they offer, the internal systems they maintain, etc.",
-		"answer": "BrightCart's core product was an online grocery marketplace plus the internal fulfillment platform used by pick/pack/route/delivery teams to execute orders end-to-end."
-	},
-	{
-		"question": "What was the team's mission, and where did your role fit in? This could refer to the team's goals, the projects they worked on, the technologies they used, etc.",
-		"answer": "My team owned the Order Orchestration backend. My role was to ship features that translated customer actions into fulfillment events, keep the order flow reliable, and contribute improvements to test coverage and operational readiness."
-	},
-	{
-		"question": "What were your top 3-5 day-to-day responsibilities? This could refer to the tasks you were responsible for, the projects you worked on, the technologies you used, etc.",
-		"answer": "Day-to-day, I implemented backend endpoints for order refunds and status updates, wrote database migrations and data fixups, developed/maintained background reconciliation jobs, and supported on-call investigations for order-flow incidents."
-	},
-	{
-		"question": "Which programming languages, frameworks, and tools did you use most?",
-		"answer": "Go, PostgreSQL/SQL, Redis, Docker, GitHub Actions, and React for internal admin tooling."
-	},
-	{
-		"question": "What architecture or system type did you work on, and what scale was it? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
-		"answer": "We used a service-based architecture: stateless Go services behind an API gateway, PostgreSQL as the source of truth, Redis for caching, and async queues for long-running workflows. During promotions we handled roughly ~5k orders/day."
-	},
-	{
-		"question": "What were the most important features or projects you worked on? This could refer to the features you were responsible for, the projects you worked on, the technologies you used, etc.",
-		"answer": "The biggest projects were (1) a refund workflow with idempotency guarantees, (2) an order status timeline for customer visibility, and (3) a reconciliation job that detected mismatches between order events and fulfillment records."
-	},
-	{
-		"question": "What specific problem did your work solve for the business or users?",
-		"answer": "Customer refunds were sometimes delayed or duplicated, which increased support tickets and created real customer trust issues. The work aimed to make refund processing deterministic under retries and failures."
-	},
-	{
-		"question": "What was your personal role on each major project?",
-		"answer": "On the refund workflow, I implemented the core service changes, added idempotency-key enforcement, and drove the PRs through review and CI. For the timeline and reconciliation, I owned the backend endpoints and jobs, then validated behavior with tests and metrics."
-	},
-	{
-		"question": "What challenges, bugs, or technical blockers did you have to overcome?",
-		"answer": "The hardest blocker was a retry/race condition that could emit multiple refund intents when downstream webhooks retried. I reproduced the failure using logs and request traces, then fixed it by adding safer transactional boundaries and persistence-level safeguards."
-	},
-	{
-		"question": "Did you improve performance, reliability, security, or maintainability? How? Include specific metrics and results if available.",
-		"answer": "Yes—reliability improvements were the focus. After adding idempotency and tightening error handling, refund-related failures dropped from ~2.1% to ~0.6%, and P95 refund API latency improved about 18% due to better caching of hot lookups."
-	},
-	{
-		"question": "Did you build, improve, or maintain APIs, databases, or integrations?",
-		"answer": "I built and maintained REST endpoints for refunds and order status, created PostgreSQL migrations to support the refund intent model, and implemented the integration layer to the payment provider including webhook handling."
-	},
-	{
-		"question": "Did you write tests, improve CI/CD, or participate in code reviews? If so, what did you do and what were the results?",
-		"answer": "I added unit and integration tests around refund handlers and webhook processing, improved CI by enabling parallel Go test runs in GitHub Actions, and consistently participated in code reviews to ensure safer deployments."
-	},
-	{
-		"question": "Did you work in Agile, Scrum, Kanban, or another process? If so, what platforms did you use, what challenges did you face, and what were the results?",
-		"answer": "We worked in two-week Scrum sprints using Jira for planning and GitHub PRs for execution. Early challenges were scoping tasks precisely, but better estimation and smaller PRs improved our on-time delivery rate."
-	},
-	{
-		"question": "Who did you collaborate with, such as designers, PMs, QA, or other engineers? Did you use any specific platforms or tools to collaborate?",
-		"answer": "I collaborated with PMs for requirements, QA for test scenarios, and senior engineers for design reviews. We used Slack for real-time coordination, Jira for tracking, and shared dashboards for monitoring."
-	},
-	{
-		"question": "Did you mentor, lead, or help onboard anyone? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
-		"answer": "I mentored two new hires by pairing on their first PRs and writing short runbooks for local setup and debugging. This reduced time-to-first-PR from about 4 weeks to roughly 2 weeks."
-	},
-	{
-		"question": "What measurable results came from your work, such as speed, cost, uptime, or user growth? Include specific metrics and results if available.",
-		"answer": "Refund support tickets decreased by ~35%, reconciliation correctness reached 99.2%, and order-status reporting completeness improved enough to reduce customer escalations tied to stale status."
-	},
-	{
-		"question": "What was the hardest technical problem you solved, and how did you solve it? Be thorough in your explanation, including the technical details and the solution you implemented.",
-		"answer": "The hardest problem was achieving effectively exactly-once refund intent handling across async workers and webhook retries. I combined idempotency keys, a unique constraint on (payment_id + idempotency_key) in PostgreSQL, and careful transactional updates. Then I adjusted retry boundaries so that downstream duplicate webhook deliveries became safe no-ops, which eliminated refund duplicates in production."
-	},
-	{
-		"question": "What were your main technical strengths in this role? List 3-6 and add a brief example for each.",
-		"answer": "Debugging distributed issues with logs/metrics (using trace IDs to isolate the race), designing APIs with resiliency in mind (timeout/retry boundaries), strong data modeling in Postgres (unique constraints + migrations), writing maintainable Go services (small interfaces, clear separation of concerns), and shipping collaboratively through PRs with tight feedback loops."
-	},
-	{
-		"question": "Which accomplishments from this role had the clearest impact on your journey as a software engineer? Include any numbers if you have them, otherwise describe the outcome.",
-		"answer": "The biggest growth came from owning production features end-to-end: I learned to define success metrics up front, validate behavior with tests and monitoring, and iterate quickly based on on-call learnings. The reliability improvements and reduced refund failures made it clear how to turn real incidents into durable engineering changes."
-	}
-]
+{
+	"id": "example-swe-job-1",
+	"questions": [
+		{
+			"question": "What was your official job title, employer, employment dates, and industry (e.g., fintech, healthcare, devtools)? Is the job still active? Add a 1-2 sentence blurb about what the industry is and what your company did in it.",
+			"answer": "Entry-Level Software Engineer at BrightCart (e-commerce logistics), Mar 2023 to Aug 2025. BrightCart is in retail logistics: it helps online retailers move inventory and fulfill orders reliably, especially around delivery SLA commitments."
+		},
+		{
+			"question": "What was the company's product, service, or internal system? This could refer to the company's core product, the services they offer, the internal systems they maintain, etc.",
+			"answer": "BrightCart's core product was an online grocery marketplace plus the internal fulfillment platform used by pick/pack/route/delivery teams to execute orders end-to-end."
+		},
+		{
+			"question": "What was the team's mission, and where did your role fit in? This could refer to the team's goals, the projects they worked on, the technologies they used, etc.",
+			"answer": "My team owned the Order Orchestration backend. My role was to ship features that translated customer actions into fulfillment events, keep the order flow reliable, and contribute improvements to test coverage and operational readiness."
+		},
+		{
+			"question": "What were your top 3-5 day-to-day responsibilities? This could refer to the tasks you were responsible for, the projects you worked on, the technologies you used, etc.",
+			"answer": "Day-to-day, I implemented backend endpoints for order refunds and status updates, wrote database migrations and data fixups, developed/maintained background reconciliation jobs, and supported on-call investigations for order-flow incidents."
+		},
+		{
+			"question": "Which programming languages, frameworks, and tools did you use most?",
+			"answer": "Go, PostgreSQL/SQL, Redis, Docker, GitHub Actions, and React for internal admin tooling."
+		},
+		{
+			"question": "What architecture or system type did you work on, and what scale was it? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
+			"answer": "We used a service-based architecture: stateless Go services behind an API gateway, PostgreSQL as the source of truth, Redis for caching, and async queues for long-running workflows. During promotions we handled roughly ~5k orders/day."
+		},
+		{
+			"question": "What were the most important features or projects you worked on? This could refer to the features you were responsible for, the projects you worked on, the technologies you used, etc.",
+			"answer": "The biggest projects were (1) a refund workflow with idempotency guarantees, (2) an order status timeline for customer visibility, and (3) a reconciliation job that detected mismatches between order events and fulfillment records."
+		},
+		{
+			"question": "What specific problem did your work solve for the business or users?",
+			"answer": "Customer refunds were sometimes delayed or duplicated, which increased support tickets and created real customer trust issues. The work aimed to make refund processing deterministic under retries and failures."
+		},
+		{
+			"question": "What was your personal role on each major project?",
+			"answer": "On the refund workflow, I implemented the core service changes, added idempotency-key enforcement, and drove the PRs through review and CI. For the timeline and reconciliation, I owned the backend endpoints and jobs, then validated behavior with tests and metrics."
+		},
+		{
+			"question": "What challenges, bugs, or technical blockers did you have to overcome?",
+			"answer": "The hardest blocker was a retry/race condition that could emit multiple refund intents when downstream webhooks retried. I reproduced the failure using logs and request traces, then fixed it by adding safer transactional boundaries and persistence-level safeguards."
+		},
+		{
+			"question": "Did you improve performance, reliability, security, or maintainability? How? Include specific metrics and results if available.",
+			"answer": "Yes—reliability improvements were the focus. After adding idempotency and tightening error handling, refund-related failures dropped from ~2.1% to ~0.6%, and P95 refund API latency improved about 18% due to better caching of hot lookups."
+		},
+		{
+			"question": "Did you build, improve, or maintain APIs, databases, or integrations?",
+			"answer": "I built and maintained REST endpoints for refunds and order status, created PostgreSQL migrations to support the refund intent model, and implemented the integration layer to the payment provider including webhook handling."
+		},
+		{
+			"question": "Did you write tests, improve CI/CD, or participate in code reviews? If so, what did you do and what were the results?",
+			"answer": "I added unit and integration tests around refund handlers and webhook processing, improved CI by enabling parallel Go test runs in GitHub Actions, and consistently participated in code reviews to ensure safer deployments."
+		},
+		{
+			"question": "Did you work in Agile, Scrum, Kanban, or another process? If so, what platforms did you use, what challenges did you face, and what were the results?",
+			"answer": "We worked in two-week Scrum sprints using Jira for planning and GitHub PRs for execution. Early challenges were scoping tasks precisely, but better estimation and smaller PRs improved our on-time delivery rate."
+		},
+		{
+			"question": "Who did you collaborate with, such as designers, PMs, QA, or other engineers? Did you use any specific platforms or tools to collaborate?",
+			"answer": "I collaborated with PMs for requirements, QA for test scenarios, and senior engineers for design reviews. We used Slack for real-time coordination, Jira for tracking, and shared dashboards for monitoring."
+		},
+		{
+			"question": "Did you mentor, lead, or help onboard anyone? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
+			"answer": "I mentored two new hires by pairing on their first PRs and writing short runbooks for local setup and debugging. This reduced time-to-first-PR from about 4 weeks to roughly 2 weeks."
+		},
+		{
+			"question": "What measurable results came from your work, such as speed, cost, uptime, or user growth? Include specific metrics and results if available.",
+			"answer": "Refund support tickets decreased by ~35%, reconciliation correctness reached 99.2%, and order-status reporting completeness improved enough to reduce customer escalations tied to stale status."
+		},
+		{
+			"question": "What was the hardest technical problem you solved, and how did you solve it? Be thorough in your explanation, including the technical details and the solution you implemented.",
+			"answer": "The hardest problem was achieving effectively exactly-once refund intent handling across async workers and webhook retries. I combined idempotency keys, a unique constraint on (payment_id + idempotency_key) in PostgreSQL, and careful transactional updates. Then I adjusted retry boundaries so that downstream duplicate webhook deliveries became safe no-ops, which eliminated refund duplicates in production."
+		},
+		{
+			"question": "What were your main technical strengths in this role? List 3-6 and add a brief example for each.",
+			"answer": "Debugging distributed issues with logs/metrics (using trace IDs to isolate the race), designing APIs with resiliency in mind (timeout/retry boundaries), strong data modeling in Postgres (unique constraints + migrations), writing maintainable Go services (small interfaces, clear separation of concerns), and shipping collaboratively through PRs with tight feedback loops."
+		},
+		{
+			"question": "Which accomplishments from this role had the clearest impact on your journey as a software engineer? Include any numbers if you have them, otherwise describe the outcome.",
+			"answer": "The biggest growth came from owning production features end-to-end: I learned to define success metrics up front, validate behavior with tests and monitoring, and iterate quickly based on on-call learnings. The reliability improvements and reduced refund failures made it clear how to turn real incidents into durable engineering changes."
+		}
+	]
+}

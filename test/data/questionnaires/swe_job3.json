@@ -1,82 +1,85 @@
-[
-	{
-		"question": "What was your official job title, employer, employment dates, and industry (e.g., fintech, healthcare, devtools)? Is the job still active? Add a 1-2 sentence blurb about what the industry is and what your company did in it.",
-		"answer": "Senior Software Engineer at AeroPay (fintech payments), Jun 2019 to Jul 2026. Payments infrastructure is high-stakes software that must be secure, auditable, and correct under retries and failures. AeroPay processed card and ACH transactions for merchants and provided ledger, settlement, and reconciliation services."
-	},
-	{
-		"question": "What was the company's product, service, or internal system? This could refer to the company's core product, the services they offer, the internal systems they maintain, etc.",
-		"answer": "AeroPay's customer-facing product enabled merchants to accept payments and get payouts, backed by internal services such as the general ledger, risk/fraud event pipeline, payment authorization/capture orchestration, and settlement reconciliation."
-	},
-	{
-		"question": "What was the team's mission, and where did your role fit in? This could refer to the team's goals, the projects they worked on, the technologies they used, etc.",
-		"answer": "My team owned the Ledger & Reconciliation domain. Our mission was to ensure every financial event produced an auditable, consistent ledger impact, even when upstream webhooks retried or services failed mid-flight. I led core design work and helped drive incident prevention across the payment lifecycle."
-	},
-	{
-		"question": "What were your top 3-5 day-to-day responsibilities? This could refer to the tasks you were responsible for, the projects you worked on, the technologies you used, etc.",
-		"answer": "I architected ledger and settlement flows, implemented and reviewed critical Go services and database migrations, led design reviews and on-call incident triage, maintained observability and SLOs, and mentored engineers on distributed-systems correctness."
-	},
-	{
-		"question": "Which programming languages, frameworks, and tools did you use most?",
-		"answer": "Go, PostgreSQL, Kafka, Redis, gRPC/REST, Kubernetes (Helm), OpenTelemetry, and Terraform. I also used React for internal ops dashboards and SQL tooling for audit queries."
-	},
-	{
-		"question": "What architecture or system type did you work on, and what scale was it? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
-		"answer": "We operated a distributed, multi-tenant microservices system. Ledger correctness was implemented with event sourcing concepts plus strong idempotency: payment events were persisted, then applied to ledger transaction tables via workers. Scale was billions of transactions per year, with frequent webhook-driven updates and multi-region deployments."
-	},
-	{
-		"question": "What were the most important features or projects you worked on? This could refer to the features you were responsible for, the projects you worked on, the technologies you used, etc.",
-		"answer": "Major work included (1) migrating ledger updates toward a more auditable event-driven model, (2) building an idempotent chargeback/refund pipeline that safely handles duplicate network callbacks, (3) creating reconciliation APIs and reports used by ops and finance, and (4) improving settlement retry and backoff logic."
-	},
-	{
-		"question": "What specific problem did your work solve for the business or users?",
-		"answer": "The business problem was operational cost and timing: ledger inconsistencies could delay settlement and require manual intervention during audits. For users, the goal was preventing incorrect balances or delayed payouts caused by transient failures and retries."
-	},
-	{
-		"question": "What was your personal role on each major project?",
-		"answer": "I owned the core design and implementation of ledger/idempotency mechanisms, led cross-service API contracts for reconciliation and settlement, and served as the technical decision-maker for rollout strategy (canaries, automated verification, and safe rollback)."
-	},
-	{
-		"question": "What challenges, bugs, or technical blockers did you have to overcome?",
-		"answer": "A recurring challenge was achieving correctness across concurrent updates and out-of-order webhooks: the same external event could be delivered multiple times, and different event types could arrive in surprising orders. We also had to handle multi-region failovers without creating split-brain ledger writes."
-	},
-	{
-		"question": "Did you improve performance, reliability, security, or maintainability? How? Include specific metrics and results if available.",
-		"answer": "Reliability and maintainability were the big focus. We improved settlement reconciliation SLA from about 30 minutes to ~12 minutes by tightening retry logic and adding automated reconciliation checks. Incident rate for ledger drift dropped by ~45%, and we increased audit coverage with deterministic event records and stronger access controls."
-	},
-	{
-		"question": "Did you build, improve, or maintain APIs, databases, or integrations?",
-		"answer": "I built reconciliation APIs and internal tooling endpoints, evolved PostgreSQL ledger schemas (including idempotency and transaction correlation tables), and integrated with payment gateways and settlement systems. I also implemented publishing/consuming patterns around Kafka with an outbox-like approach to avoid losing events."
-	},
-	{
-		"question": "Did you write tests, improve CI/CD, or participate in code reviews? If so, what did you do and what were the results?",
-		"answer": "I added contract tests for ledger event schemas, built integration tests that replay real webhook payloads safely, and introduced automated canary verification in CI/CD (including invariants like sum-of-ledger balances). These changes reduced production regressions and made rollouts safer."
-	},
-	{
-		"question": "Did you work in Agile, Scrum, Kanban, or another process? If so, what platforms did you use, what challenges did you face, and what were the results?",
-		"answer": "We used Scrum with explicit risk and security review gates for payment-impacting work, plus a Kanban lane for operational fixes during incident windows. The challenge was managing scope while ensuring compliance requirements were met; better threat modeling templates and smaller release units improved audit outcomes and reduced late surprises."
-	},
-	{
-		"question": "Who did you collaborate with, such as designers, PMs, QA, or other engineers? Did you use any specific platforms or tools to collaborate?",
-		"answer": "I collaborated closely with security/compliance, platform engineering, and SRE for incident response and reliability improvements. We coordinated in Slack and Jira, used PagerDuty for on-call workflows, and relied on Grafana/OpenTelemetry traces for debugging."
-	},
-	{
-		"question": "Did you mentor, lead, or help onboard anyone? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
-		"answer": "I mentored multiple engineers through onboarding into ledger correctness and payment flows. I ran regular deep-dive sessions on idempotency and failure modes, reviewed architecture proposals, and helped onboard new hires into on-call. The result was faster independent ownership and fewer correctness regressions."
-	},
-	{
-		"question": "What measurable results came from your work, such as speed, cost, uptime, or user growth? Include specific metrics and results if available.",
-		"answer": "Key outcomes included fewer manual reconciliation tasks (down ~45%), improved settlement reconciliation completion (~30m to ~12m), and higher end-to-end payment success under retries. We also achieved better audit readiness by ensuring every ledger impact had deterministic correlation IDs for investigation."
-	},
-	{
-		"question": "What was the hardest technical problem you solved, and how did you solve it? Be thorough in your explanation, including the technical details and the solution you implemented.",
-		"answer": "The hardest problem was guaranteeing idempotent, consistent ledger updates in the presence of multi-region failover and duplicate/out-of-order webhook deliveries. I designed a deterministic idempotency scheme using stable external event IDs and correlation keys, persisted them in PostgreSQL with strong uniqueness constraints, and used transactional outbox-style publishing so events were never dropped. Then I implemented ledger apply workers that verify invariants (no double-apply, monotonic revision where applicable) and added reconciliation jobs that continuously compare expected ledger state from event history against the applied transaction tables."
-	},
-	{
-		"question": "What were your main technical strengths in this role? List 3-6 and add a brief example for each.",
-		"answer": "Distributed-systems correctness (idempotency + invariants under retries), secure-by-design implementation (least-privilege access and auditable event records), system architecture and migration planning (phased rollouts with automated verification), observability and incident leadership (trace-first debugging and SLO ownership), and mentoring through concrete failure-mode walkthroughs."
-	},
-	{
-		"question": "Which accomplishments from this role had the clearest impact on your journey as a software engineer? Include any numbers if you have them, otherwise describe the outcome.",
-		"answer": "The clearest impact was shifting from feature delivery to ownership of correctness and reliability. Driving the ledger/idempotency architecture and the reconciliation SLA improvements made me more systematic about designing measurable invariants, validating behavior with replay tests, and leading teams through high-risk changes with confidence."
-	}
-]
+{
+	"id": "example-swe-job-3",
+	"questions": [
+		{
+			"question": "What was your official job title, employer, employment dates, and industry (e.g., fintech, healthcare, devtools)? Is the job still active? Add a 1-2 sentence blurb about what the industry is and what your company did in it.",
+			"answer": "Senior Software Engineer at AeroPay (fintech payments), Jun 2019 to Jul 2026. Payments infrastructure is high-stakes software that must be secure, auditable, and correct under retries and failures. AeroPay processed card and ACH transactions for merchants and provided ledger, settlement, and reconciliation services."
+		},
+		{
+			"question": "What was the company's product, service, or internal system? This could refer to the company's core product, the services they offer, the internal systems they maintain, etc.",
+			"answer": "AeroPay's customer-facing product enabled merchants to accept payments and get payouts, backed by internal services such as the general ledger, risk/fraud event pipeline, payment authorization/capture orchestration, and settlement reconciliation."
+		},
+		{
+			"question": "What was the team's mission, and where did your role fit in? This could refer to the team's goals, the projects they worked on, the technologies they used, etc.",
+			"answer": "My team owned the Ledger & Reconciliation domain. Our mission was to ensure every financial event produced an auditable, consistent ledger impact, even when upstream webhooks retried or services failed mid-flight. I led core design work and helped drive incident prevention across the payment lifecycle."
+		},
+		{
+			"question": "What were your top 3-5 day-to-day responsibilities? This could refer to the tasks you were responsible for, the projects you worked on, the technologies you used, etc.",
+			"answer": "I architected ledger and settlement flows, implemented and reviewed critical Go services and database migrations, led design reviews and on-call incident triage, maintained observability and SLOs, and mentored engineers on distributed-systems correctness."
+		},
+		{
+			"question": "Which programming languages, frameworks, and tools did you use most?",
+			"answer": "Go, PostgreSQL, Kafka, Redis, gRPC/REST, Kubernetes (Helm), OpenTelemetry, and Terraform. I also used React for internal ops dashboards and SQL tooling for audit queries."
+		},
+		{
+			"question": "What architecture or system type did you work on, and what scale was it? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
+			"answer": "We operated a distributed, multi-tenant microservices system. Ledger correctness was implemented with event sourcing concepts plus strong idempotency: payment events were persisted, then applied to ledger transaction tables via workers. Scale was billions of transactions per year, with frequent webhook-driven updates and multi-region deployments."
+		},
+		{
+			"question": "What were the most important features or projects you worked on? This could refer to the features you were responsible for, the projects you worked on, the technologies you used, etc.",
+			"answer": "Major work included (1) migrating ledger updates toward a more auditable event-driven model, (2) building an idempotent chargeback/refund pipeline that safely handles duplicate network callbacks, (3) creating reconciliation APIs and reports used by ops and finance, and (4) improving settlement retry and backoff logic."
+		},
+		{
+			"question": "What specific problem did your work solve for the business or users?",
+			"answer": "The business problem was operational cost and timing: ledger inconsistencies could delay settlement and require manual intervention during audits. For users, the goal was preventing incorrect balances or delayed payouts caused by transient failures and retries."
+		},
+		{
+			"question": "What was your personal role on each major project?",
+			"answer": "I owned the core design and implementation of ledger/idempotency mechanisms, led cross-service API contracts for reconciliation and settlement, and served as the technical decision-maker for rollout strategy (canaries, automated verification, and safe rollback)."
+		},
+		{
+			"question": "What challenges, bugs, or technical blockers did you have to overcome?",
+			"answer": "A recurring challenge was achieving correctness across concurrent updates and out-of-order webhooks: the same external event could be delivered multiple times, and different event types could arrive in surprising orders. We also had to handle multi-region failovers without creating split-brain ledger writes."
+		},
+		{
+			"question": "Did you improve performance, reliability, security, or maintainability? How? Include specific metrics and results if available.",
+			"answer": "Reliability and maintainability were the big focus. We improved settlement reconciliation SLA from about 30 minutes to ~12 minutes by tightening retry logic and adding automated reconciliation checks. Incident rate for ledger drift dropped by ~45%, and we increased audit coverage with deterministic event records and stronger access controls."
+		},
+		{
+			"question": "Did you build, improve, or maintain APIs, databases, or integrations?",
+			"answer": "I built reconciliation APIs and internal tooling endpoints, evolved PostgreSQL ledger schemas (including idempotency and transaction correlation tables), and integrated with payment gateways and settlement systems. I also implemented publishing/consuming patterns around Kafka with an outbox-like approach to avoid losing events."
+		},
+		{
+			"question": "Did you write tests, improve CI/CD, or participate in code reviews? If so, what did you do and what were the results?",
+			"answer": "I added contract tests for ledger event schemas, built integration tests that replay real webhook payloads safely, and introduced automated canary verification in CI/CD (including invariants like sum-of-ledger balances). These changes reduced production regressions and made rollouts safer."
+		},
+		{
+			"question": "Did you work in Agile, Scrum, Kanban, or another process? If so, what platforms did you use, what challenges did you face, and what were the results?",
+			"answer": "We used Scrum with explicit risk and security review gates for payment-impacting work, plus a Kanban lane for operational fixes during incident windows. The challenge was managing scope while ensuring compliance requirements were met; better threat modeling templates and smaller release units improved audit outcomes and reduced late surprises."
+		},
+		{
+			"question": "Who did you collaborate with, such as designers, PMs, QA, or other engineers? Did you use any specific platforms or tools to collaborate?",
+			"answer": "I collaborated closely with security/compliance, platform engineering, and SRE for incident response and reliability improvements. We coordinated in Slack and Jira, used PagerDuty for on-call workflows, and relied on Grafana/OpenTelemetry traces for debugging."
+		},
+		{
+			"question": "Did you mentor, lead, or help onboard anyone? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
+			"answer": "I mentored multiple engineers through onboarding into ledger correctness and payment flows. I ran regular deep-dive sessions on idempotency and failure modes, reviewed architecture proposals, and helped onboard new hires into on-call. The result was faster independent ownership and fewer correctness regressions."
+		},
+		{
+			"question": "What measurable results came from your work, such as speed, cost, uptime, or user growth? Include specific metrics and results if available.",
+			"answer": "Key outcomes included fewer manual reconciliation tasks (down ~45%), improved settlement reconciliation completion (~30m to ~12m), and higher end-to-end payment success under retries. We also achieved better audit readiness by ensuring every ledger impact had deterministic correlation IDs for investigation."
+		},
+		{
+			"question": "What was the hardest technical problem you solved, and how did you solve it? Be thorough in your explanation, including the technical details and the solution you implemented.",
+			"answer": "The hardest problem was guaranteeing idempotent, consistent ledger updates in the presence of multi-region failover and duplicate/out-of-order webhook deliveries. I designed a deterministic idempotency scheme using stable external event IDs and correlation keys, persisted them in PostgreSQL with strong uniqueness constraints, and used transactional outbox-style publishing so events were never dropped. Then I implemented ledger apply workers that verify invariants (no double-apply, monotonic revision where applicable) and added reconciliation jobs that continuously compare expected ledger state from event history against the applied transaction tables."
+		},
+		{
+			"question": "What were your main technical strengths in this role? List 3-6 and add a brief example for each.",
+			"answer": "Distributed-systems correctness (idempotency + invariants under retries), secure-by-design implementation (least-privilege access and auditable event records), system architecture and migration planning (phased rollouts with automated verification), observability and incident leadership (trace-first debugging and SLO ownership), and mentoring through concrete failure-mode walkthroughs."
+		},
+		{
+			"question": "Which accomplishments from this role had the clearest impact on your journey as a software engineer? Include any numbers if you have them, otherwise describe the outcome.",
+			"answer": "The clearest impact was shifting from feature delivery to ownership of correctness and reliability. Driving the ledger/idempotency architecture and the reconciliation SLA improvements made me more systematic about designing measurable invariants, validating behavior with replay tests, and leading teams through high-risk changes with confidence."
+		}
+	]
+}

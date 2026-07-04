@@ -1,82 +1,85 @@
-[
-	{
-		"question": "What was your official job title, employer, employment dates, and industry (e.g., fintech, healthcare, devtools)? Is the job still active? Add a 1-2 sentence blurb about what the industry is and what your company did in it.",
-		"answer": "Software Engineer II at CloudQuill (developer tooling/SaaS), Feb 2022 to May 2025. The devtools space builds platforms that help teams write, search, and maintain documentation at scale—turning knowledge into fast, reliable developer workflows."
-	},
-	{
-		"question": "What was the company's product, service, or internal system? This could refer to the company's core product, the services they offer, the internal systems they maintain, etc.",
-		"answer": "CloudQuill's product was a documentation and knowledge base platform with authoring, versioning, and enterprise search. Internally, we also built ingestion pipelines that transform Markdown sources into indexed, queryable artifacts."
-	},
-	{
-		"question": "What was the team's mission, and where did your role fit in? This could refer to the team's goals, the projects they worked on, the technologies they used, etc.",
-		"answer": "My team's mission was to keep documentation search accurate and fast as content changes continuously. My role was to own core ingestion/indexing services, improve query performance, and lead engineering work end-to-end from design to rollout."
-	},
-	{
-		"question": "What were your top 3-5 day-to-day responsibilities? This could refer to the tasks you were responsible for, the projects you worked on, the technologies you used, etc.",
-		"answer": "Most days I implemented backend services (Go) that publish/consume content events, debugged search relevance and latency using dashboards, wrote and reviewed data and API changes, and collaborated with frontend engineers on query/UX contract updates."
-	},
-	{
-		"question": "Which programming languages, frameworks, and tools did you use most?",
-		"answer": "Go, TypeScript, React, PostgreSQL, Kafka, Elasticsearch/OpenSearch, gRPC/REST, Docker, and Terraform on AWS."
-	},
-	{
-		"question": "What architecture or system type did you work on, and what scale was it? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
-		"answer": "We used an event-driven microservices architecture: ingestion services emitted events to Kafka, worker services transformed/validated content, and indexers updated Elasticsearch. At peak, the system handled millions of document updates per day and search workloads with tens of thousands of queries per minute."
-	},
-	{
-		"question": "What were the most important features or projects you worked on? This could refer to the features you were responsible for, the projects you worked on, the technologies you used, etc.",
-		"answer": "Key projects included (1) improving search ranking signals using fresh metadata, (2) building a robust doc versioning + reindex pipeline, and (3) adding an API for webhooks so customers could react to publish/version events."
-	},
-	{
-		"question": "What specific problem did your work solve for the business or users?",
-		"answer": "Users complained that search results could be stale right after updates, and that certain queries were slow during high-traffic periods. The goal was to reduce indexing lag and cut query latency while maintaining relevance."
-	},
-	{
-		"question": "What was your personal role on each major project?",
-		"answer": "For ranking, I designed the indexing changes, implemented feature extraction, and worked with data/ML peers on ranking inputs. For versioning, I owned the pipeline design and wrote the worker/indexer logic. For webhooks, I implemented the public contract, retries, and verification."
-	},
-	{
-		"question": "What challenges, bugs, or technical blockers did you have to overcome?",
-		"answer": "The biggest blocker was ensuring consistency between PostgreSQL (source content) and Elasticsearch (search index) under out-of-order events. I worked through edge cases where deletes arrived after updates and caused ghost search results."
-	},
-	{
-		"question": "Did you improve performance, reliability, security, or maintainability? How? Include specific metrics and results if available.",
-		"answer": "Performance and reliability were major wins. After optimizing query execution paths and caching aggregations, P95 search latency dropped about 40%. We also reduced indexing-related error rates by ~60% by adding validation gates and safer retry/backoff behavior."
-	},
-	{
-		"question": "Did you build, improve, or maintain APIs, databases, or integrations?",
-		"answer": "I built gRPC/REST APIs used by the frontend search UI, evolved Postgres schemas for content metadata, and maintained integrations with Kafka and Elasticsearch (including reindex and rolling mapping updates)."
-	},
-	{
-		"question": "Did you write tests, improve CI/CD, or participate in code reviews? If so, what did you do and what were the results?",
-		"answer": "I wrote integration tests for ingestion-to-indexing flows using testcontainers, improved CI to run indexing tests on merge groups, and enforced PR review requirements with clear checklists. This lowered regressions and made rollbacks less frequent."
-	},
-	{
-		"question": "Did you work in Agile, Scrum, Kanban, or another process? If so, what platforms did you use, what challenges did you face, and what were the results?",
-		"answer": "We followed Scrum for roadmap items, but used a Kanban-style flow for operational work and indexing hotfixes. The main challenge was balancing reliability work against feature velocity, and we improved outcomes by defining explicit reliability SLOs per sprint."
-	},
-	{
-		"question": "Who did you collaborate with, such as designers, PMs, QA, or other engineers? Did you use any specific platforms or tools to collaborate?",
-		"answer": "I collaborated with PMs on what search problems mattered most, QA on scenario coverage (especially around deletes/retries), and platform engineers on observability and infrastructure. Slack for coordination, Jira for planning, and shared Grafana dashboards for visibility."
-	},
-	{
-		"question": "Did you mentor, lead, or help onboard anyone? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
-		"answer": "I mentored junior engineers and helped onboard two teammates by pairing during their first end-to-end indexing changes. We used a mix of design docs, PR walkthroughs, and debugging sessions; the result was faster independence and fewer repeated mistakes."
-	},
-	{
-		"question": "What measurable results came from your work, such as speed, cost, uptime, or user growth? Include specific metrics and results if available.",
-		"answer": "Search performance improved (P95 latency -40%), indexing freshness improved with lower lag windows, and we saw fewer customer-reported stale search incidents. On the engineering side, we cut indexing retries that hit dead-letter queues by ~30% after tuning."
-	},
-	{
-		"question": "What was the hardest technical problem you solved, and how did you solve it? Be thorough in your explanation, including the technical details and the solution you implemented.",
-		"answer": "The hardest problem was building an index consistency mechanism that tolerated out-of-order Kafka events. I implemented a versioned indexing model using content revision IDs: each index update included the revision, and the indexer ignored older revisions. I also modeled deletes explicitly (tombstones) and added periodic reconciliation jobs that compared Postgres revisions to index documents to eliminate ghost results."
-	},
-	{
-		"question": "What were your main technical strengths in this role? List 3-6 and add a brief example for each.",
-		"answer": "Event-driven system design (Kafka consumers/producers with clear contracts), performance tuning (query profiling and caching), data correctness under concurrency (revision IDs + tombstones), pragmatic API design (gRPC/REST boundaries), and operational excellence (Grafana-based debugging and SLO ownership)."
-	},
-	{
-		"question": "Which accomplishments from this role had the clearest impact on your journey as a software engineer? Include any numbers if you have them, otherwise describe the outcome.",
-		"answer": "Owning indexing and search taught me to treat correctness and performance as first-class requirements. The measurable latency improvements and reduced stale-results incidents helped me grow from feature implementation to system ownership, including designing safer rollouts and recovery strategies."
-	}
-]
+{
+	"id": "example-swe-job-2",
+	"questions": [
+		{
+			"question": "What was your official job title, employer, employment dates, and industry (e.g., fintech, healthcare, devtools)? Is the job still active? Add a 1-2 sentence blurb about what the industry is and what your company did in it.",
+			"answer": "Software Engineer II at CloudQuill (developer tooling/SaaS), Feb 2022 to May 2025. The devtools space builds platforms that help teams write, search, and maintain documentation at scale—turning knowledge into fast, reliable developer workflows."
+		},
+		{
+			"question": "What was the company's product, service, or internal system? This could refer to the company's core product, the services they offer, the internal systems they maintain, etc.",
+			"answer": "CloudQuill's product was a documentation and knowledge base platform with authoring, versioning, and enterprise search. Internally, we also built ingestion pipelines that transform Markdown sources into indexed, queryable artifacts."
+		},
+		{
+			"question": "What was the team's mission, and where did your role fit in? This could refer to the team's goals, the projects they worked on, the technologies they used, etc.",
+			"answer": "My team's mission was to keep documentation search accurate and fast as content changes continuously. My role was to own core ingestion/indexing services, improve query performance, and lead engineering work end-to-end from design to rollout."
+		},
+		{
+			"question": "What were your top 3-5 day-to-day responsibilities? This could refer to the tasks you were responsible for, the projects you worked on, the technologies you used, etc.",
+			"answer": "Most days I implemented backend services (Go) that publish/consume content events, debugged search relevance and latency using dashboards, wrote and reviewed data and API changes, and collaborated with frontend engineers on query/UX contract updates."
+		},
+		{
+			"question": "Which programming languages, frameworks, and tools did you use most?",
+			"answer": "Go, TypeScript, React, PostgreSQL, Kafka, Elasticsearch/OpenSearch, gRPC/REST, Docker, and Terraform on AWS."
+		},
+		{
+			"question": "What architecture or system type did you work on, and what scale was it? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
+			"answer": "We used an event-driven microservices architecture: ingestion services emitted events to Kafka, worker services transformed/validated content, and indexers updated Elasticsearch. At peak, the system handled millions of document updates per day and search workloads with tens of thousands of queries per minute."
+		},
+		{
+			"question": "What were the most important features or projects you worked on? This could refer to the features you were responsible for, the projects you worked on, the technologies you used, etc.",
+			"answer": "Key projects included (1) improving search ranking signals using fresh metadata, (2) building a robust doc versioning + reindex pipeline, and (3) adding an API for webhooks so customers could react to publish/version events."
+		},
+		{
+			"question": "What specific problem did your work solve for the business or users?",
+			"answer": "Users complained that search results could be stale right after updates, and that certain queries were slow during high-traffic periods. The goal was to reduce indexing lag and cut query latency while maintaining relevance."
+		},
+		{
+			"question": "What was your personal role on each major project?",
+			"answer": "For ranking, I designed the indexing changes, implemented feature extraction, and worked with data/ML peers on ranking inputs. For versioning, I owned the pipeline design and wrote the worker/indexer logic. For webhooks, I implemented the public contract, retries, and verification."
+		},
+		{
+			"question": "What challenges, bugs, or technical blockers did you have to overcome?",
+			"answer": "The biggest blocker was ensuring consistency between PostgreSQL (source content) and Elasticsearch (search index) under out-of-order events. I worked through edge cases where deletes arrived after updates and caused ghost search results."
+		},
+		{
+			"question": "Did you improve performance, reliability, security, or maintainability? How? Include specific metrics and results if available.",
+			"answer": "Performance and reliability were major wins. After optimizing query execution paths and caching aggregations, P95 search latency dropped about 40%. We also reduced indexing-related error rates by ~60% by adding validation gates and safer retry/backoff behavior."
+		},
+		{
+			"question": "Did you build, improve, or maintain APIs, databases, or integrations?",
+			"answer": "I built gRPC/REST APIs used by the frontend search UI, evolved Postgres schemas for content metadata, and maintained integrations with Kafka and Elasticsearch (including reindex and rolling mapping updates)."
+		},
+		{
+			"question": "Did you write tests, improve CI/CD, or participate in code reviews? If so, what did you do and what were the results?",
+			"answer": "I wrote integration tests for ingestion-to-indexing flows using testcontainers, improved CI to run indexing tests on merge groups, and enforced PR review requirements with clear checklists. This lowered regressions and made rollbacks less frequent."
+		},
+		{
+			"question": "Did you work in Agile, Scrum, Kanban, or another process? If so, what platforms did you use, what challenges did you face, and what were the results?",
+			"answer": "We followed Scrum for roadmap items, but used a Kanban-style flow for operational work and indexing hotfixes. The main challenge was balancing reliability work against feature velocity, and we improved outcomes by defining explicit reliability SLOs per sprint."
+		},
+		{
+			"question": "Who did you collaborate with, such as designers, PMs, QA, or other engineers? Did you use any specific platforms or tools to collaborate?",
+			"answer": "I collaborated with PMs on what search problems mattered most, QA on scenario coverage (especially around deletes/retries), and platform engineers on observability and infrastructure. Slack for coordination, Jira for planning, and shared Grafana dashboards for visibility."
+		},
+		{
+			"question": "Did you mentor, lead, or help onboard anyone? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
+			"answer": "I mentored junior engineers and helped onboard two teammates by pairing during their first end-to-end indexing changes. We used a mix of design docs, PR walkthroughs, and debugging sessions; the result was faster independence and fewer repeated mistakes."
+		},
+		{
+			"question": "What measurable results came from your work, such as speed, cost, uptime, or user growth? Include specific metrics and results if available.",
+			"answer": "Search performance improved (P95 latency -40%), indexing freshness improved with lower lag windows, and we saw fewer customer-reported stale search incidents. On the engineering side, we cut indexing retries that hit dead-letter queues by ~30% after tuning."
+		},
+		{
+			"question": "What was the hardest technical problem you solved, and how did you solve it? Be thorough in your explanation, including the technical details and the solution you implemented.",
+			"answer": "The hardest problem was building an index consistency mechanism that tolerated out-of-order Kafka events. I implemented a versioned indexing model using content revision IDs: each index update included the revision, and the indexer ignored older revisions. I also modeled deletes explicitly (tombstones) and added periodic reconciliation jobs that compared Postgres revisions to index documents to eliminate ghost results."
+		},
+		{
+			"question": "What were your main technical strengths in this role? List 3-6 and add a brief example for each.",
+			"answer": "Event-driven system design (Kafka consumers/producers with clear contracts), performance tuning (query profiling and caching), data correctness under concurrency (revision IDs + tombstones), pragmatic API design (gRPC/REST boundaries), and operational excellence (Grafana-based debugging and SLO ownership)."
+		},
+		{
+			"question": "Which accomplishments from this role had the clearest impact on your journey as a software engineer? Include any numbers if you have them, otherwise describe the outcome.",
+			"answer": "Owning indexing and search taught me to treat correctness and performance as first-class requirements. The measurable latency improvements and reduced stale-results incidents helped me grow from feature implementation to system ownership, including designing safer rollouts and recovery strategies."
+		}
+	]
+}

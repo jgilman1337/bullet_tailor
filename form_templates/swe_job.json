@@ -1,82 +1,85 @@
-[
-	{
-		"question": "What was your official job title, employer, employment dates, and industry (e.g., fintech, healthcare, devtools)? Is the job still active? Add a 1-2 sentence blurb about what the industry is and what your company did in it.",
-		"answer": ""
-	},
-	{
-		"question": "What was the company's product, service, or internal system? This could refer to the company's core product, the services they offer, the internal systems they maintain, etc.",
-		"answer": ""
-	},
-	{
-		"question": "What was the team's mission, and where did your role fit in? This could refer to the team's goals, the projects they worked on, the technologies they used, etc.",
-		"answer": ""
-	},
-	{
-		"question": "What were your top 3-5 day-to-day responsibilities? This could refer to the tasks you were responsible for, the projects you worked on, the technologies you used, etc.",
-		"answer": ""
-	},
-	{
-		"question": "Which programming languages, frameworks, and tools did you use most?",
-		"answer": ""
-	},
-	{
-		"question": "What architecture or system type did you work on, and what scale was it? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
-		"answer": ""
-	},
-	{
-		"question": "What were the most important features or projects you worked on? This could refer to the features you were responsible for, the projects you worked on, the technologies you used, etc.",
-		"answer": ""
-	},
-	{
-		"question": "What specific problem did your work solve for the business or users?",
-		"answer": ""
-	},
-	{
-		"question": "What was your personal role on each major project?",
-		"answer": ""
-	},
-	{
-		"question": "What challenges, bugs, or technical blockers did you have to overcome?",
-		"answer": ""
-	},
-	{
-		"question": "Did you improve performance, reliability, security, or maintainability? How? Include specific metrics and results if available.",
-		"answer": ""
-	},
-	{
-		"question": "Did you build, improve, or maintain APIs, databases, or integrations?",
-		"answer": ""
-	},
-	{
-		"question": "Did you write tests, improve CI/CD, or participate in code reviews? If so, what did you do and what were the results?",
-		"answer": ""
-	},
-	{
-		"question": "Did you work in Agile, Scrum, Kanban, or another process? If so, what platforms did you use, what challenges did you face, and what were the results?",
-		"answer": ""
-	},
-	{
-		"question": "Who did you collaborate with, such as designers, PMs, QA, or other engineers? Did you use any specific platforms or tools to collaborate?",
-		"answer": ""
-	},
-	{
-		"question": "Did you mentor, lead, or help onboard anyone? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
-		"answer": ""
-	},
-	{
-		"question": "What measurable results came from your work, such as speed, cost, uptime, or user growth? Include specific metrics and results if available.",
-		"answer": ""
-	},
-	{
-		"question": "What was the hardest technical problem you solved, and how did you solve it? Be thorough in your explanation, including the technical details and the solution you implemented.",
-		"answer": ""
-	},
-	{
-		"question": "What were your main technical strengths in this role? List 3-6 and add a brief example for each.",
-		"answer": ""
-	},
-	{
-		"question": "Which accomplishments from this role had the clearest impact on your journey as a software engineer? Include any numbers if you have them, otherwise describe the outcome.",
-		"answer": ""
-	}
-]
+{
+	"id": "swe-job-change-me-to-a-unique-id",
+	"questions": [
+		{
+			"question": "What was your official job title, employer, employment dates, and industry (e.g., fintech, healthcare, devtools)? Is the job still active? Add a 1-2 sentence blurb about what the industry is and what your company did in it.",
+			"answer": ""
+		},
+		{
+			"question": "What was the company's product, service, or internal system? This could refer to the company's core product, the services they offer, the internal systems they maintain, etc.",
+			"answer": ""
+		},
+		{
+			"question": "What was the team's mission, and where did your role fit in? This could refer to the team's goals, the projects they worked on, the technologies they used, etc.",
+			"answer": ""
+		},
+		{
+			"question": "What were your top 3-5 day-to-day responsibilities? This could refer to the tasks you were responsible for, the projects you worked on, the technologies you used, etc.",
+			"answer": ""
+		},
+		{
+			"question": "Which programming languages, frameworks, and tools did you use most?",
+			"answer": ""
+		},
+		{
+			"question": "What architecture or system type did you work on, and what scale was it? This could refer to the technical architecture, the database schema, the API endpoints, the UI/UX design, etc.",
+			"answer": ""
+		},
+		{
+			"question": "What were the most important features or projects you worked on? This could refer to the features you were responsible for, the projects you worked on, the technologies you used, etc.",
+			"answer": ""
+		},
+		{
+			"question": "What specific problem did your work solve for the business or users?",
+			"answer": ""
+		},
+		{
+			"question": "What was your personal role on each major project?",
+			"answer": ""
+		},
+		{
+			"question": "What challenges, bugs, or technical blockers did you have to overcome?",
+			"answer": ""
+		},
+		{
+			"question": "Did you improve performance, reliability, security, or maintainability? How? Include specific metrics and results if available.",
+			"answer": ""
+		},
+		{
+			"question": "Did you build, improve, or maintain APIs, databases, or integrations?",
+			"answer": ""
+		},
+		{
+			"question": "Did you write tests, improve CI/CD, or participate in code reviews? If so, what did you do and what were the results?",
+			"answer": ""
+		},
+		{
+			"question": "Did you work in Agile, Scrum, Kanban, or another process? If so, what platforms did you use, what challenges did you face, and what were the results?",
+			"answer": ""
+		},
+		{
+			"question": "Who did you collaborate with, such as designers, PMs, QA, or other engineers? Did you use any specific platforms or tools to collaborate?",
+			"answer": ""
+		},
+		{
+			"question": "Did you mentor, lead, or help onboard anyone? If so, what was the collaboration like, what platforms did you use, what challenges did you face, and what were the results?",
+			"answer": ""
+		},
+		{
+			"question": "What measurable results came from your work, such as speed, cost, uptime, or user growth? Include specific metrics and results if available.",
+			"answer": ""
+		},
+		{
+			"question": "What was the hardest technical problem you solved, and how did you solve it? Be thorough in your explanation, including the technical details and the solution you implemented.",
+			"answer": ""
+		},
+		{
+			"question": "What were your main technical strengths in this role? List 3-6 and add a brief example for each.",
+			"answer": ""
+		},
+		{
+			"question": "Which accomplishments from this role had the clearest impact on your journey as a software engineer? Include any numbers if you have them, otherwise describe the outcome.",
+			"answer": ""
+		}
+	]
+}
