@@ -1,4 +1,4 @@
-package bullet_tailor
+package skill_tailor
 
 import (
 	"context"

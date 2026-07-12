@@ -1,4 +1,4 @@
-package bullet_tailor
+package skill_tailor
 
 // GPTAuth is the authentication information for the GPT API.
 type GPTAuth struct {

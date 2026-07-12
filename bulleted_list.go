@@ -1,7 +1,7 @@
-package bullet_tailor
+package skill_tailor
 
 const (
-	SchemaID          = "https://github.com/jgilman1337/bullet_tailor/result_schema.go"
+	SchemaID          = "https://github.com/jgilman1337/skill_tailor/result_schema.go"
 	SchemaName        = "bulleted_list"
 	SchemaDescription = "A list of bullet points for a job resume."
 

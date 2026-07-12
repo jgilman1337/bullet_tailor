@@ -3,7 +3,7 @@ package test
 import (
 	"testing"
 
-	"github.com/jgilman1337/bullet_tailor"
+	"github.com/jgilman1337/skill_tailor"
 )
 
 func TestInitGPTConfig_DefaultsWhenEnvUnset(t *testing.T) {
@@ -19,8 +19,8 @@ func TestInitGPTConfig_DefaultsWhenEnvUnset(t *testing.T) {
 	auth, params := InitGPTConfig(t)
 
 	// Verify the auth and params are set correctly
-	if auth.Endpoint != bullet_tailor.DefaultGPTAuth().Endpoint {
-		t.Fatalf("unexpected auth.Endpoint: got %q want %q", auth.Endpoint, bullet_tailor.DefaultGPTAuth().Endpoint)
+	if auth.Endpoint != skill_tailor.DefaultGPTAuth().Endpoint {
+		t.Fatalf("unexpected auth.Endpoint: got %q want %q", auth.Endpoint, skill_tailor.DefaultGPTAuth().Endpoint)
 	}
 	if auth.APIKey != "" {
 		t.Fatalf("unexpected auth.APIKey: got %q want empty", auth.APIKey)
@@ -29,14 +29,14 @@ func TestInitGPTConfig_DefaultsWhenEnvUnset(t *testing.T) {
 	if params.Model != "" {
 		t.Fatalf("unexpected params.Model: got %q want empty", params.Model)
 	}
-	if params.MaxTokens != bullet_tailor.DefaultGPTParams().MaxTokens {
-		t.Fatalf("unexpected params.MaxTokens: got %d want %d", params.MaxTokens, bullet_tailor.DefaultGPTParams().MaxTokens)
+	if params.MaxTokens != skill_tailor.DefaultGPTParams().MaxTokens {
+		t.Fatalf("unexpected params.MaxTokens: got %d want %d", params.MaxTokens, skill_tailor.DefaultGPTParams().MaxTokens)
 	}
-	if params.Temperature != bullet_tailor.DefaultGPTParams().Temperature {
-		t.Fatalf("unexpected params.Temperature: got %v want %v", params.Temperature, bullet_tailor.DefaultGPTParams().Temperature)
+	if params.Temperature != skill_tailor.DefaultGPTParams().Temperature {
+		t.Fatalf("unexpected params.Temperature: got %v want %v", params.Temperature, skill_tailor.DefaultGPTParams().Temperature)
 	}
-	if params.TopP != bullet_tailor.DefaultGPTParams().TopP {
-		t.Fatalf("unexpected params.TopP: got %v want %v", params.TopP, bullet_tailor.DefaultGPTParams().TopP)
+	if params.TopP != skill_tailor.DefaultGPTParams().TopP {
+		t.Fatalf("unexpected params.TopP: got %v want %v", params.TopP, skill_tailor.DefaultGPTParams().TopP)
 	}
 }
 

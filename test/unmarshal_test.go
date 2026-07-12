@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jgilman1337/bullet_tailor"
+	"github.com/jgilman1337/skill_tailor"
 	"gopkg.in/yaml.v3"
 )
 
@@ -17,7 +17,7 @@ func TestQuestionnaireUnmarshalJSON_Valid(t *testing.T) {
 		]
 	}`)
 
-	var q bullet_tailor.Questionnaire
+	var q skill_tailor.Questionnaire
 	if err := json.Unmarshal(input, &q); err != nil {
 		t.Fatalf("expected valid unmarshal, got error: %v", err)
 	}
@@ -39,7 +39,7 @@ func TestQuestionnaireUnmarshalJSON_InvalidID(t *testing.T) {
 		"questions": [{"question":"q1","answer":"a1"}]
 	}`)
 
-	var q bullet_tailor.Questionnaire
+	var q skill_tailor.Questionnaire
 	err := json.Unmarshal(input, &q)
 	if err == nil {
 		t.Fatalf("expected error, got nil")
@@ -57,7 +57,7 @@ questions:
     answer: " a2 "
 `
 
-	var q bullet_tailor.Questionnaire
+	var q skill_tailor.Questionnaire
 	if err := yaml.Unmarshal([]byte(input), &q); err != nil {
 		t.Fatalf("expected valid unmarshal, got error: %v", err)
 	}
@@ -81,7 +81,7 @@ questions:
     answer: "a3"
 `
 
-	var q bullet_tailor.Questionnaire
+	var q skill_tailor.Questionnaire
 	err := yaml.Unmarshal([]byte(input), &q)
 	if err == nil {
 		t.Fatalf("expected error, got nil")

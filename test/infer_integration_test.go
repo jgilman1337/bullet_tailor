@@ -8,16 +8,21 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jgilman1337/bullet_tailor"
+	skill_tailor "github.com/jgilman1337/skill_tailor"
 )
 
 func TestInferIntegration(t *testing.T) {
+	// This test requires real OpenAI credentials
+	if os.Getenv("OPENAI_API_KEY") == "" {
+		t.Skip("skipping integration test: missing OPENAI_API_KEY")
+	}
+
 	// Read the questionnaire and unmarshal it
 	formBytes, err := os.ReadFile("data/questionnaires/swe_job1.json")
 	if err != nil {
 		t.Fatalf("failed to read questionnaire: %v", err)
 	}
-	var questionnaire bullet_tailor.Questionnaire
+	var questionnaire skill_tailor.Questionnaire
 	if err := json.Unmarshal(formBytes, &questionnaire); err != nil {
 		t.Fatalf("failed to unmarshal questionnaire: %v", err)
 	}
@@ -30,20 +35,20 @@ func TestInferIntegration(t *testing.T) {
 
 	// Create a GPT config and inference client
 	auth, params := InitGPTConfig(t)
-	client := bullet_tailor.NewInferClient(auth)
+	client := skill_tailor.NewInferClient(auth)
 
 	// Create the inference arguments
-	args := &bullet_tailor.InferArgs{
+	args := &skill_tailor.InferArgs{
 		JobListing:    strings.TrimSpace(string(jobBytes)),
 		MinBullets:    5,
 		MaxBullets:    5,
 		Questionnaire: &questionnaire,
-		SystemPrompt:  bullet_tailor.DefaultPrompt,
+		SystemPrompt:  skill_tailor.DefaultPrompt,
 		Timeout:       60 * time.Second,
 	}
 
 	// Infer the bulleted list and ensure the number of bullets is within the expected range
-	bulletedList, err := bullet_tailor.Infer(client, params, args)
+	bulletedList, err := skill_tailor.Infer(client, params, args)
 	if err != nil {
 		t.Fatalf("Infer failed: %v", err)
 	}
