@@ -8,6 +8,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/jgilman1337/skill_tailor/pkg/common"
 	"github.com/openai/openai-go/v3"
 	"github.com/openai/openai-go/v3/option"
 )
@@ -33,7 +34,7 @@ func DefaultInferArgs() *InferArgs {
 }
 
 // NewInferClient creates a new client for the GPT API.
-func NewInferClient(auth *GPTAuth) *openai.Client {
+func NewInferClient(auth *common.GPTAuth) *openai.Client {
 	client := openai.NewClient(
 		option.WithAPIKey(auth.APIKey),
 		option.WithBaseURL(auth.Endpoint),
@@ -42,7 +43,7 @@ func NewInferClient(auth *GPTAuth) *openai.Client {
 }
 
 // Infer is the main function for inferring the template from the questionnaire.
-func Infer(client *openai.Client, params *GPTParams, args *InferArgs) (*BulletedList, error) {
+func Infer(client *openai.Client, params *common.GPTParams, args *InferArgs) (*BulletedList, error) {
 	// Ensure the client is not nil
 	if client == nil {
 		return nil, errors.New("client is nil")
@@ -50,7 +51,7 @@ func Infer(client *openai.Client, params *GPTParams, args *InferArgs) (*Bulleted
 
 	// Ensure the params are not nil
 	if params == nil {
-		params = DefaultGPTParams()
+		params = common.DefaultGPTParams()
 	}
 
 	// Ensure the args are not nil

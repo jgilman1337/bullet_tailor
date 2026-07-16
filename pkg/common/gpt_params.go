@@ -1,4 +1,4 @@
-package tailor
+package common
 
 // GPTAuth is the authentication information for the GPT API.
 type GPTAuth struct {

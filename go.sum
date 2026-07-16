@@ -1,5 +1,7 @@
 github.com/caarlos0/env/v11 v11.4.1 h1:fYwH0sWEsBSMPG7t4e/PEfTFzrWrpjyygXyUnWiSwEw=
 github.com/caarlos0/env/v11 v11.4.1/go.mod h1:qupehSf/Y0TUTsxKywqRt/vJjN5nz6vauiYEUUr8P4U=
+github.com/jgilman1337/go-resume-schema v1.0.0 h1:iBV26SU51LLIu2cEQQSeoNa7yneDcWZerCLwiIynP98=
+github.com/jgilman1337/go-resume-schema v1.0.0/go.mod h1:c9+7LA6PMqTcxsJafm4Y6ERbCLj7ZrPzbSmrCZ7APjI=
 github.com/openai/openai-go/v3 v3.41.0 h1:9GkxcN02U5NG0WGdQjZ0cTSu/pMXEyzL2LfF0ruZCck=
 github.com/openai/openai-go/v3 v3.41.0/go.mod h1:cdufnVK14cWcT9qA1rRtrXx4FTRsgbDPW7Ia7SS5cZo=
 github.com/tidwall/gjson v1.14.2/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=

@@ -3,7 +3,7 @@ package tailor_test
 import (
 	"testing"
 
-	"github.com/jgilman1337/skill_tailor/pkg/tailor"
+	"github.com/jgilman1337/skill_tailor/pkg/common"
 	common_test "github.com/jgilman1337/skill_tailor/test/common"
 )
 
@@ -20,8 +20,8 @@ func TestInitGPTConfig_DefaultsWhenEnvUnset(t *testing.T) {
 	auth, params := common_test.InitGPTConfig(t)
 
 	// Verify the auth and params are set correctly
-	if auth.Endpoint != tailor.DefaultGPTAuth().Endpoint {
-		t.Fatalf("unexpected auth.Endpoint: got %q want %q", auth.Endpoint, tailor.DefaultGPTAuth().Endpoint)
+	if auth.Endpoint != common.DefaultGPTAuth().Endpoint {
+		t.Fatalf("unexpected auth.Endpoint: got %q want %q", auth.Endpoint, common.DefaultGPTAuth().Endpoint)
 	}
 	if auth.APIKey != "" {
 		t.Fatalf("unexpected auth.APIKey: got %q want empty", auth.APIKey)
@@ -30,14 +30,14 @@ func TestInitGPTConfig_DefaultsWhenEnvUnset(t *testing.T) {
 	if params.Model != "" {
 		t.Fatalf("unexpected params.Model: got %q want empty", params.Model)
 	}
-	if params.MaxTokens != tailor.DefaultGPTParams().MaxTokens {
-		t.Fatalf("unexpected params.MaxTokens: got %d want %d", params.MaxTokens, tailor.DefaultGPTParams().MaxTokens)
+	if params.MaxTokens != common.DefaultGPTParams().MaxTokens {
+		t.Fatalf("unexpected params.MaxTokens: got %d want %d", params.MaxTokens, common.DefaultGPTParams().MaxTokens)
 	}
-	if params.Temperature != tailor.DefaultGPTParams().Temperature {
-		t.Fatalf("unexpected params.Temperature: got %v want %v", params.Temperature, tailor.DefaultGPTParams().Temperature)
+	if params.Temperature != common.DefaultGPTParams().Temperature {
+		t.Fatalf("unexpected params.Temperature: got %v want %v", params.Temperature, common.DefaultGPTParams().Temperature)
 	}
-	if params.TopP != tailor.DefaultGPTParams().TopP {
-		t.Fatalf("unexpected params.TopP: got %v want %v", params.TopP, tailor.DefaultGPTParams().TopP)
+	if params.TopP != common.DefaultGPTParams().TopP {
+		t.Fatalf("unexpected params.TopP: got %v want %v", params.TopP, common.DefaultGPTParams().TopP)
 	}
 }
 
